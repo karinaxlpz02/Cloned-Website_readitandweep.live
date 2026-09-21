@@ -1,0 +1,11 @@
+@import "tailwindcss";
+
+html { width: 100vw; height: 100vh; overflow: hidden; cursor: none; }
+body { margin: 0; background: #c8b496; font-family: Arial, Helvetica, sans-serif; line-height: normal; text-align: center; cursor: none; }
+::selection { color: #c8b496; background: #ffc8e3; }
+.text-canvas { max-width: 100%; cursor: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
+.text-snippet { position: fixed; display: inline-block; text-align: center; line-height: normal; }
+.text-snippet mark { background: #c8b496; }
+.text-snippet a { color: #f11ea9; font-family: "Times New Roman", Times, serif; text-decoration: underline; }
+.text-snippet .diary { color: #fff; font-family: Arial, Helvetica, sans-serif; }
+.text-snippet .trash { color: #ffc8e3; font-family: Arial, Helvetica, sans-serif; }
