@@ -1,19 +1,19 @@
 @import "tailwindcss";
 
 html { width: 100vw; height: 100vh; overflow: hidden; cursor: none; }
-body { margin: 0; background: #f5f5dc; font-family: Arial, Helvetica, sans-serif; line-height: normal; text-align: center; cursor: none; }
-::selection { color: #c8b496; background: #ffc8e3; }
+body { color: #f11ea9; margin: 0; background: #f5f5dc; font-family: Arial, Helvetica, sans-serif; line-height: normal; text-align: center; cursor: none; }
+::selection { color: #d60087; background: #ffc8e3; }
 .text-canvas { max-width: 100%; cursor: none; -webkit-font-smoothing: antialiased; -moz-osx-font-smoothing: grayscale; }
 .text-snippet { position: fixed; display: inline-block; text-align: center; line-height: normal; }
-.text-snippet mark { background: #f5f5dc; }
-.text-snippet a { color: #f11ea9; font-family: "Times New Roman", Times, serif; text-decoration: underline; }
-.text-snippet a.link-pink-0 { color: #f4b6cf; }
-.text-snippet a.link-pink-1 { color: #f3a0c2; }
-.text-snippet a.link-pink-2 { color: #f58ab8; }
-.text-snippet a.link-pink-3 { color: #fa72af; }
-.text-snippet a.link-pink-4 { color: #ff5ca8; }
-.text-snippet a.link-pink-5 { color: #ff409b; }
-.text-snippet a.link-pink-6 { color: #f72991; }
-.text-snippet a.link-pink-7 { color: #ed1687; }
-.text-snippet .diary { color: #fff; font-family: Arial, Helvetica, sans-serif; }
-.text-snippet .trash { color: #ffc8e3; font-family: Arial, Helvetica, sans-serif; }
+.text-snippet mark { color: inherit; background: #f5f5dc; }
+.text-snippet a { color: inherit; font-family: "Times New Roman", Times, serif; text-decoration: underline; }
+.text-snippet.text-pink-0 { color: #f4b6cf; }
+.text-snippet.text-pink-1 { color: #f3a0c2; }
+.text-snippet.text-pink-2 { color: #f58ab8; }
+.text-snippet.text-pink-3 { color: #fa72af; }
+.text-snippet.text-pink-4 { color: #ff5ca8; }
+.text-snippet.text-pink-5 { color: #ff409b; }
+.text-snippet.text-pink-6 { color: #f51bb5; }
+.text-snippet.text-pink-7 { color: #f000c0; }
+.text-snippet .diary { font-family: Arial, Helvetica, sans-serif; }
+.text-snippet .trash { font-family: Arial, Helvetica, sans-serif; }

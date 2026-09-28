@@ -26,7 +26,6 @@ export default function TextCanvas() {
     let current: Snippet | null = null;
     let characterIndex = 0;
     let nextId = 0;
-    let nextLinkColor = 0;
     let viewportWidth = window.innerWidth;
     let viewportHeight = window.innerHeight;
     const [sizeMin, sizeMax] = typeRange(viewportWidth);
@@ -62,7 +61,7 @@ export default function TextCanvas() {
       const top = randomInt(0, viewportHeight - measure.clientHeight);
       measure.remove();
 
-      const pinkIndex = kind === "links" ? nextLinkColor++ % 8 : 0;
+      const pinkIndex = nextId % 8;
       current = { ...entry, id: nextId++, kind, writtenText: "", size, maxWidth, left, top, pinkIndex };
       characterIndex = 0;
       setSnippets((all) => [...all, current as Snippet]);
@@ -74,9 +73,9 @@ export default function TextCanvas() {
   return (
     <main className="text-canvas" aria-label="Read it and Weep text canvas">
       {snippets.map((snippet) => (
-        <div className="text-snippet" key={snippet.id} style={{ top: snippet.top, left: snippet.left, fontSize: snippet.size, maxWidth: snippet.maxWidth }}>
+        <div className={`text-snippet text-pink-${snippet.pinkIndex}`} key={snippet.id} style={{ top: snippet.top, left: snippet.left, fontSize: snippet.size, maxWidth: snippet.maxWidth }}>
           {snippet.kind === "links" ? (
-            <mark><a className={`link-pink-${snippet.pinkIndex}`} href={snippet.link} target="_blank" rel="noopener noreferrer">{snippet.writtenText}</a></mark>
+            <mark><a href={snippet.link} target="_blank" rel="noopener noreferrer">{snippet.writtenText}</a></mark>
           ) : snippet.kind === "notes" ? (
             <mark className="diary">{snippet.writtenText}</mark>
           ) : (
