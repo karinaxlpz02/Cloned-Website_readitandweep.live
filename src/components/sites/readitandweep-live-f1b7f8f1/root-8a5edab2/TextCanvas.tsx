@@ -5,7 +5,7 @@ import corpus from "@/data/corpus.json";
 
 type Entry = { text: string; date: string; link?: string };
 type Kind = "trash" | "links" | "notes";
-type Snippet = Entry & { id: number; kind: Kind; writtenText: string; size: number; maxWidth: number; left: number; top: number };
+type Snippet = Entry & { id: number; kind: Kind; writtenText: string; size: number; maxWidth: number; left: number; top: number; pinkIndex: number };
 
 const source = corpus as Record<Kind, Entry[]>;
 const kinds: Kind[] = ["trash", "links", "notes"];
@@ -26,6 +26,7 @@ export default function TextCanvas() {
     let current: Snippet | null = null;
     let characterIndex = 0;
     let nextId = 0;
+    let nextLinkColor = 0;
     let viewportWidth = window.innerWidth;
     let viewportHeight = window.innerHeight;
     const [sizeMin, sizeMax] = typeRange(viewportWidth);
@@ -61,7 +62,8 @@ export default function TextCanvas() {
       const top = randomInt(0, viewportHeight - measure.clientHeight);
       measure.remove();
 
-      current = { ...entry, id: nextId++, kind, writtenText: "", size, maxWidth, left, top };
+      const pinkIndex = kind === "links" ? nextLinkColor++ % 8 : 0;
+      current = { ...entry, id: nextId++, kind, writtenText: "", size, maxWidth, left, top, pinkIndex };
       characterIndex = 0;
       setSnippets((all) => [...all, current as Snippet]);
     }, 44.4);
@@ -74,7 +76,7 @@ export default function TextCanvas() {
       {snippets.map((snippet) => (
         <div className="text-snippet" key={snippet.id} style={{ top: snippet.top, left: snippet.left, fontSize: snippet.size, maxWidth: snippet.maxWidth }}>
           {snippet.kind === "links" ? (
-            <mark><a href={snippet.link} target="_blank" rel="noopener noreferrer">{snippet.writtenText}</a></mark>
+            <mark><a className={`link-pink-${snippet.pinkIndex}`} href={snippet.link} target="_blank" rel="noopener noreferrer">{snippet.writtenText}</a></mark>
           ) : snippet.kind === "notes" ? (
             <mark className="diary">{snippet.writtenText}</mark>
           ) : (
